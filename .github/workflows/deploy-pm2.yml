@@ -50,6 +50,17 @@ jobs:
             # Initialize git repo if needed
             if [ ! -d .git ]; then
               echo "🔧 Initializing git repository..."
+
+              # Backup existing files if any
+              if [ "$(ls -A)" ]; then
+                echo "📦 Backing up existing files..."
+                mkdir -p ~/backups
+                tar -czf ~/backups/pre-deploy-$(date +%Y%m%d-%H%M%S).tar.gz ./* ./.* 2>/dev/null || true
+              fi
+
+              # Remove conflicting files
+              rm -rf nginx docker-compose.yml strapi-backend/package-lock.json 2>/dev/null || true
+
               git init
               git remote add origin git@github.com:vbalagovic/axerate.git
               git fetch origin
