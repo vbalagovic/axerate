@@ -136,7 +136,8 @@ jobs:
 
             npm install  # Install ALL dependencies (including @types/node for build)
 
-            # Build with appropriate memory limit for server (1.5GB for 2GB RAM server)
+            # Build with appropriate memory limit for server (2.5GB for 4GB RAM server)
+            export NODE_OPTIONS="--max-old-space-size=2560"
             npm run build
 
             npm prune --production  # Remove dev dependencies after build
