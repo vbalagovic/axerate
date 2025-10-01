@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "page_metadata",
+  "info": {
+    "singularName": "page-metadata",
+    "pluralName": "page-metadatas",
+    "displayName": "Page Metadata",
+    "description": "SEO metadata for different pages"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageName": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "keywords": {
+      "type": "text"
+    },
+    "ogTitle": {
+      "type": "string"
+    },
+    "ogDescription": {
+      "type": "text"
+    },
+    "ogImage": {
+      "type": "string"
+    },
+    "twitterCard": {
+      "type": "enumeration",
+      "enum": [
+        "summary",
+        "summary_large_image",
+        "app",
+        "player"
+      ],
+      "default": "summary_large_image"
+    },
+    "canonicalUrl": {
+      "type": "string"
+    }
+  }
+}

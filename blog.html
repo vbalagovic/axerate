@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Axerate Blog: Insights on AI, Technology, and Startup Innovation" name="description" />
+    <title>Axerate - Blog</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <link href="styles.css" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+</head>
+<body class="antialiased bg-primary text-primary">
+<header class="bg-header backdrop-blur-lg sticky top-0 z-50 border-b border-header">
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<a class="flex items-center space-x-3" href="index.html">
+<img alt="Axerate Logo" class="h-10 w-auto" src="./logo.png">
+<span class="text-2xl font-bold text-primary tracking-wider"></span>
+</a>
+<div class="hidden md:flex items-center space-x-8">
+<a class="nav-link text-subtle hover:text-primary text-sm font-medium" href="index.html">Home</a>
+<a class="nav-link text-subtle hover:text-primary text-sm font-medium" href="main.html">Startup Studio</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-subtle hover:text-primary focus:outline-none" id="theme-toggle">
+<span class="material-symbols-outlined dark:hidden">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:inline">light_mode</span>
+</button>
+<a class="hidden md:inline-block cta-button bg-violet-500 hover:bg-violet-600 text-white font-semibold py-2 px-6 rounded-lg shadow-lg shadow-violet-500/20" href="index.html#contact">
+                    Get In Touch
+                </a>
+<button class="md:hidden text-subtle hover:text-primary focus:outline-none z-50" id="menu-btn">
+<span class="material-symbols-outlined" id="menu-open-icon">menu</span>
+<span class="material-symbols-outlined hidden" id="menu-close-icon">close</span>
+</button>
+</div>
+</nav>
+<div class="mobile-menu absolute top-0 left-0 w-full bg-primary -translate-y-full md:hidden" id="mobile-menu">
+<div class="flex flex-col items-center justify-center h-screen space-y-8">
+<a class="text-2xl font-semibold text-primary" href="index.html">Home</a>
+<a class="text-2xl font-semibold text-primary" href="main.html">Startup Studio</a>
+<a class="text-2xl font-semibold text-primary cta-button bg-violet-500 hover:bg-violet-600 text-white py-3 px-8 rounded-lg" href="index.html#contact">Get In Touch</a>
+</div>
+</div>
+</header>
+
+<main class="py-16">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">Axerate Blog</h1>
+            <p class="text-subtle text-lg max-w-2xl mx-auto">Insights on AI, technology, and startup innovation from our team of experts.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            <div class="lg:col-span-3">
+                <!-- Featured Article -->
+                <article class="bg-card border border-strong rounded-xl p-8 mb-12">
+                    <a href="amazon-ai-blog.html">
+                        <img src="https://blog.neural-draft.com/storage/tenant-assets/8/blog-images/contextual/img_68c1ef0ebb41b_1757540110.png" alt="Amazon Generative AI" class="w-full h-64 object-cover rounded-lg mb-6 hover:opacity-90 transition-opacity"/>
+                    </a>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-3 py-1 bg-violet-500/10 text-violet-300 rounded-full text-sm font-medium">Technology</span>
+                        <span class="text-subtle text-sm">September 10, 2025</span>
+                    </div>
+                    <a href="amazon-ai-blog.html"><h2 class="text-3xl font-bold text-primary mb-4 hover:text-violet-400 transition-colors">Understanding Amazon's Generative AI: Tools and Applications</h2></a>
+                    <p class="text-subtle mb-6 text-lg">Amazon's been making some pretty amazing moves in the world of generative AI lately. Explore how Amazon's generative AI tools enhance business operations and customer experiences.</p>
+
+                    <div class="prose prose-invert max-w-none">
+                        <p class="text-subtle mb-4">Amazon's been making some pretty amazing moves in the world of generative AI lately. Seriously, it's like every time I turn around, they're coming up with new ways to use this tech. You know what I mean? Generative AI is this cool thing that helps create all kinds of content using machine learning. By 2025, it's shaping up to change everything—from retail to cloud stuff. It's wild!</p>
+
+                        <p class="text-subtle mb-4">So, generative AI is basically all about algorithms that whip up new content based on what's already out there. Amazon's really tapped into this to make shopping better, run things smoother, and just come up with cooler products. I'm gonna break down a few key tools and how they're being used—trust me, it's interesting stuff.</p>
+
+                        <h3 class="text-xl font-bold text-primary mb-3 mt-8">1. Key Tools and Technologies</h3>
+                        <p class="text-subtle mb-4">And let's talk about the tools—Amazon's got some big guns in the generative AI world. Here are a few you should know about:</p>
+
+                        <ul class="text-subtle mb-6 space-y-2 pl-6">
+                            <li><strong class="text-primary">AWS SageMaker:</strong> Okay, this one's a game changer. It's a managed service that helps you build, train, and roll out machine learning models. And it's got built-in algorithms for those generative tasks—super handy, right?</li>
+                            <li><strong class="text-primary">Amazon Polly:</strong> This is cool—it's a text-to-speech tool that uses deep learning to make speech sound real. You can turn text into audio, which is awesome for making things more accessible. Seriously, how great is that for podcasts or e-learning?</li>
+                            <li><strong class="text-primary">Amazon Lex:</strong> So here's where it gets fun. This tool helps developers create chatty interfaces—like, think voice and text interaction. It's what powers chatbots and virtual assistants, making customer interactions way more personal.</li>
+                            <li><strong class="text-primary">Amazon Rekognition:</strong> Oh, and this one's neat too! It's a computer vision service that can analyze images and videos. You could use it to pull insights from visual content—like spotting faces or identifying objects. It's kinda like magic!</li>
+                        </ul>
+
+                        <h3 class="text-xl font-bold text-primary mb-3 mt-8">2. Applications of Generative AI</h3>
+                        <p class="text-subtle mb-4">But wait, there's more! Amazon's generative AI isn't just sitting around looking pretty. It's doing real work across different industries. Here are some examples that might blow your mind:</p>
+
+                        <ul class="text-subtle mb-6 space-y-2 pl-6">
+                            <li><strong class="text-primary">Retail Optimization:</strong> Retailers can use this tech to figure out what customers might like and give them personalized suggestions. Imagine an online clothing shop analyzing your past buys to suggest outfits—pretty slick, right?</li>
+                            <li><strong class="text-primary">Content Creation:</strong> Businesses can totally use Amazon Polly to turn written stuff into audio. So, if you're into making podcasts or jazzing up e-learning, this is a lifesaver!</li>
+                            <li><strong class="text-primary">Customer Support:</strong> Chatbots powered by Amazon Lex are a game changer for handling customer questions. They can respond instantly, which definitely helps keep customers happy.</li>
+                        </ul>
+
+                        <div class="flex items-center gap-4 mt-8 pt-6 border-t border-strong">
+                            <span class="text-sm text-subtle">Tags:</span>
+                            <div class="flex gap-2">
+                                <span class="px-2 py-1 bg-violet-500/10 text-violet-300 rounded text-xs">Generative AI</span>
+                                <span class="px-2 py-1 bg-violet-500/10 text-violet-300 rounded text-xs">Amazon Web Services</span>
+                                <span class="px-2 py-1 bg-violet-500/10 text-violet-300 rounded text-xs">Machine Learning</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Secondary Articles Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <article class="bg-card border border-strong rounded-xl p-6">
+                        <a href="ai-content-creation-blog.html">
+                            <img src="https://blog.neural-draft.com/storage/tenant-assets/8/blog-images/contextual/img_68c1edcd52118_1757539789.png" alt="AI Content Creation 2025" class="w-full h-48 object-cover rounded-lg mb-4 hover:opacity-90 transition-opacity"/>
+                        </a>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="px-3 py-1 bg-violet-500/10 text-violet-300 rounded-full text-sm font-medium">Technology</span>
+                            <span class="text-subtle text-sm">September 10, 2025</span>
+                        </div>
+                        <a href="ai-content-creation-blog.html"><h3 class="text-xl font-bold text-primary mb-3 hover:text-violet-400 transition-colors">The Rise of AI Content Creation in 2025</h3></a>
+                        <p class="text-subtle mb-4">You know, AI content creation's really changed the game for how we whip up written stuff, right? I mean, by 2025, it's pretty wild to see how this tech keeps improving—new tools poppin' up all over the place...</p>
+
+                        <div class="text-subtle mb-4">
+                            <p>AI content creation tools like ZeroGPT are revolutionizing how content is produced. This guide covers current tools, methods, and best practices for effective use in 2025.</p>
+                        </div>
+
+                        <div class="flex items-center gap-4 mt-6 pt-4 border-t border-strong">
+                            <span class="text-xs text-subtle">Tags:</span>
+                            <div class="flex gap-2">
+                                <span class="px-2 py-1 bg-violet-500/10 text-violet-300 rounded text-xs">AI</span>
+                                <span class="px-2 py-1 bg-violet-500/10 text-violet-300 rounded text-xs">Content Creation</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-card border border-strong rounded-xl p-6">
+                        <a href="multi-platform-engagement-blog.html">
+                            <img src="https://blog.neural-draft.com/storage/tenant-assets/8/blog-images/contextual/img_68984b64b743a_1754811236.png" alt="AI Multi-Platform Engagement" class="w-full h-48 object-cover rounded-lg mb-4 hover:opacity-90 transition-opacity"/>
+                        </a>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="px-3 py-1 bg-violet-500/10 text-violet-300 rounded-full text-sm font-medium">Content Marketing</span>
+                            <span class="text-subtle text-sm">August 10, 2025</span>
+                        </div>
+                        <a href="multi-platform-engagement-blog.html"><h3 class="text-xl font-bold text-primary mb-3 hover:text-violet-400 transition-colors">Level Up Your Content Strategy: AI-Powered Multi-Platform Engagement</h3></a>
+                        <p class="text-subtle mb-4">Ever feel like you're juggling a million things at once, kinda like a circus performer trying to manage content on all sorts of platforms? It's pretty overwhelming, right?</p>
+
+                        <div class="text-subtle mb-4">
+                            <p>Ever wondered about revolutionizing content strategy? Let me share what actually works (and what doesn't) when it comes to AI-powered multi-platform engagement.</p>
+                        </div>
+
+                        <div class="flex items-center gap-4 mt-6 pt-4 border-t border-strong">
+                            <span class="text-xs text-subtle">Tags:</span>
+                            <div class="flex gap-2">
+                                <span class="px-2 py-1 bg-violet-500/10 text-violet-300 rounded text-xs">AI in Marketing</span>
+                                <span class="px-2 py-1 bg-violet-500/10 text-violet-300 rounded text-xs">Content Repurposing</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="bg-card border border-strong rounded-xl p-6 mb-8">
+                    <h3 class="text-xl font-bold text-primary mb-4">Categories</h3>
+                    <ul class="space-y-3">
+                        <li class="flex justify-between items-center">
+                            <a href="#" class="text-subtle hover:text-violet-400 transition-colors">Technology</a>
+                            <span class="text-subtle text-sm">2</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <a href="#" class="text-subtle hover:text-violet-400 transition-colors">Content Marketing</a>
+                            <span class="text-subtle text-sm">1</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <a href="#" class="text-subtle hover:text-violet-400 transition-colors">AI & Machine Learning</a>
+                            <span class="text-subtle text-sm">3</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <a href="#" class="text-subtle hover:text-violet-400 transition-colors">Startup Strategy</a>
+                            <span class="text-subtle text-sm">1</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <a href="#" class="text-subtle hover:text-violet-400 transition-colors">Digital Innovation</a>
+                            <span class="text-subtle text-sm">2</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-card border border-strong rounded-xl p-6 mb-8">
+                    <h3 class="text-xl font-bold text-primary mb-4">Popular Tags</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-violet-500/10 text-violet-300 rounded-full text-sm">AI</span>
+                        <span class="px-3 py-1 bg-violet-500/10 text-violet-300 rounded-full text-sm">Machine Learning</span>
+                        <span class="px-3 py-1 bg-violet-500/10 text-violet-300 rounded-full text-sm">AWS</span>
+                        <span class="px-3 py-1 bg-violet-500/10 text-violet-300 rounded-full text-sm">Content Strategy</span>
+                        <span class="px-3 py-1 bg-violet-500/10 text-violet-300 rounded-full text-sm">Automation</span>
+                        <span class="px-3 py-1 bg-violet-500/10 text-violet-300 rounded-full text-sm">Innovation</span>
+                    </div>
+                </div>
+
+                <div class="bg-card border border-strong rounded-xl p-6">
+                    <h3 class="text-xl font-bold text-primary mb-4">Latest Posts</h3>
+                    <div class="space-y-4">
+                        <div class="pb-4 border-b border-strong last:border-b-0 last:pb-0">
+                            <a href="#" class="text-primary hover:text-violet-400 font-medium transition-colors">Understanding Amazon's Generative AI: Tools and Applications</a>
+                            <p class="text-subtle text-sm mt-1">September 10, 2025</p>
+                        </div>
+                        <div class="pb-4 border-b border-strong last:border-b-0 last:pb-0">
+                            <a href="#" class="text-primary hover:text-violet-400 font-medium transition-colors">The Rise of AI Content Creation in 2025</a>
+                            <p class="text-subtle text-sm mt-1">September 10, 2025</p>
+                        </div>
+                        <div class="pb-4 border-b border-strong last:border-b-0 last:pb-0">
+                            <a href="#" class="text-primary hover:text-violet-400 font-medium transition-colors">Level Up Your Content Strategy: AI-Powered Multi-Platform Engagement</a>
+                            <p class="text-subtle text-sm mt-1">August 10, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletter Signup -->
+        <div class="bg-card border border-strong rounded-xl p-8 mt-16 text-center">
+            <h3 class="text-2xl font-bold text-primary mb-4">Stay Updated</h3>
+            <p class="text-subtle mb-6 max-w-2xl mx-auto">Get the latest insights on AI, technology, and startup innovation delivered straight to your inbox.</p>
+            <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 bg-primary border border-strong rounded-lg text-primary placeholder-subtle focus:border-violet-500 focus:ring-violet-500">
+                <button class="cta-button bg-violet-500 hover:bg-violet-600 text-white px-6 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-secondary border-t border-strong">
+    <div class="container mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center space-x-3 mb-4">
+                    <img alt="Axerate Logo" class="h-10 w-auto" src="./logo.png">
+                    <span class="text-primary text-2xl font-bold tracking-wider"></span>
+                </div>
+                <p class="text-subtle mb-6 max-w-md">Building the future, one venture at a time. We provide end-to-end digital solutions for ambitious startups and enterprises.</p>
+                <div class="flex space-x-4">
+                    <a href="https://twitter.com/axerate" target="_blank" class="flex items-center justify-center w-10 h-10 bg-card border border-strong rounded-lg text-subtle hover:text-violet-400 hover:border-violet-500/30 transition-all duration-300">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/company/axerate" target="_blank" class="flex items-center justify-center w-10 h-10 bg-card border border-strong rounded-lg text-subtle hover:text-violet-400 hover:border-violet-500/30 transition-all duration-300">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/axerate" target="_blank" class="flex items-center justify-center w-10 h-10 bg-card border border-strong rounded-lg text-subtle hover:text-violet-400 hover:border-violet-500/30 transition-all duration-300">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.300 24 12c0-6.627-5.374-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-primary font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html#process" class="text-subtle hover:text-violet-400 transition-colors">Our Process</a></li>
+                    <li><a href="index.html#work" class="text-subtle hover:text-violet-400 transition-colors">Our Work</a></li>
+                    <li><a href="index.html#tech" class="text-subtle hover:text-violet-400 transition-colors">Technology</a></li>
+                    <li><a href="main.html" class="text-subtle hover:text-violet-400 transition-colors">Startup Studio</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-primary font-semibold mb-4">Contact</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html#contact" class="text-subtle hover:text-violet-400 transition-colors">Get In Touch</a></li>
+                    <li><a href="#" class="text-subtle hover:text-violet-400 transition-colors">Newsletter</a></li>
+                    <li><span class="text-subtle">hello@axerate.com</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-strong pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-subtle text-sm">© 2025 Axerate. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6 text-sm">
+                    <a href="#" class="text-subtle hover:text-violet-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-subtle hover:text-violet-400 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

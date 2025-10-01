@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Axerate: A creative studio for building and launching innovative startups." name="description" />
+    <title>Axerate - Home</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <link href="styles.css" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+</head>
+<body class="antialiased bg-primary text-primary">
+<header class="bg-header backdrop-blur-lg sticky top-0 z-50 border-b border-header">
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<a class="flex items-center space-x-3" href="#">
+<img alt="Axerate Logo" class="h-10 w-auto" src="./logo.png">
+<span class="text-2xl font-bold text-primary tracking-wider"></span>
+</a>
+<div class="hidden md:flex items-center space-x-8">
+<a class="nav-link text-subtle hover:text-primary text-sm font-medium" href="#process">Our Process</a>
+<a class="nav-link text-subtle hover:text-primary text-sm font-medium" href="#work">Our Work</a>
+<a class="nav-link text-subtle hover:text-primary text-sm font-medium" href="#tech">Technology</a>
+<a class="nav-link text-subtle hover:text-primary text-sm font-medium" href="blog.html">Blog</a>
+<a class="nav-link text-subtle hover:text-primary text-sm font-medium" href="main.html">Startup Studio</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-subtle hover:text-primary focus:outline-none" id="theme-toggle">
+<span class="material-symbols-outlined dark:hidden">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:inline">light_mode</span>
+</button>
+<a class="hidden md:inline-block cta-button bg-violet-500 hover:bg-violet-600 text-white font-semibold py-2 px-6 rounded-lg shadow-lg shadow-violet-500/20" href="#contact">
+                    Get In Touch
+                </a>
+<button class="md:hidden text-subtle hover:text-primary focus:outline-none z-50" id="menu-btn">
+<span class="material-symbols-outlined" id="menu-open-icon">menu</span>
+<span class="material-symbols-outlined hidden" id="menu-close-icon">close</span>
+</button>
+</div>
+</nav>
+<div class="mobile-menu absolute top-0 left-0 w-full bg-primary -translate-y-full md:hidden" id="mobile-menu">
+<div class="flex flex-col items-center justify-center h-screen space-y-8">
+<a class="text-2xl font-semibold text-primary" href="#process">Our Process</a>
+<a class="text-2xl font-semibold text-primary" href="#work">Our Work</a>
+<a class="text-2xl font-semibold text-primary" href="#tech">Technology</a>
+<a class="text-2xl font-semibold text-primary" href="blog.html">Blog</a>
+<a class="text-2xl font-semibold text-primary" href="main.html">Startup Studio</a>
+<a class="text-2xl font-semibold text-primary cta-button bg-violet-500 hover:bg-violet-600 text-white py-3 px-8 rounded-lg" href="#contact">Get In Touch</a>
+</div>
+</div>
+</header>
+<main>
+    <section class="hero-section py-32 md:py-48">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-primary leading-tight mb-6 animate-on-scroll fade-in-up" style="animation-delay: 0.1s;">
+                End-to-End Digital Solutions.
+            </h1>
+            <p class="text-lg md:text-xl text-subtle max-w-3xl mx-auto mb-10 animate-on-scroll fade-in-up" style="animation-delay: 0.3s;">
+                From consulting and data analysis to full-stack development and AI/ML, we provide the expertise to bring your vision to life.
+            </p>
+            <a class="cta-button bg-violet-500 hover:bg-violet-600 text-white font-bold py-4 px-10 rounded-lg text-lg inline-flex items-center gap-2 shadow-xl shadow-violet-500/20 animate-on-scroll fade-in-up hover:scale-105 transition-all duration-300" href="#contact" style="animation-delay: 0.5s;">
+                Start Your Project Today
+                <span class="material-symbols-outlined">rocket_launch</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="py-24 bg-secondary" id="process">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-on-scroll fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-primary">Our Process</h2>
+                <p class="text-subtle mt-4 text-lg max-w-2xl mx-auto">A transparent and collaborative journey from concept to launch.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="feature-card p-8 animate-on-scroll fade-in-up bg-card" style="animation-delay: 0.1s;">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-xl icon-bg mb-6">
+                        <span class="material-symbols-outlined text-violet-300 text-3xl">emoji_objects</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Discovery & Strategy</h3>
+                    <p class="text-subtle">We start by diving deep into your vision, goals, and target audience. This phase includes market research, competitive analysis, and a collaborative workshop to define the project's strategic direction and technical requirements.</p>
+                </div>
+                <div class="feature-card p-8 animate-on-scroll fade-in-up bg-card" style="animation-delay: 0.2s;">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-xl icon-bg mb-6">
+                        <span class="material-symbols-outlined text-violet-300 text-3xl">design_services</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Design & Prototyping</h3>
+                    <p class="text-subtle">Our design team creates wireframes, mockups, and interactive prototypes to visualize the user experience. We focus on creating intuitive, user-friendly interfaces that align with your brand identity and project goals.</p>
+                </div>
+                <div class="feature-card p-8 animate-on-scroll fade-in-up bg-card" style="animation-delay: 0.3s;">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-xl icon-bg mb-6">
+                        <span class="material-symbols-outlined text-violet-300 text-3xl">terminal</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Development & Testing</h3>
+                    <p class="text-subtle">Our developers bring the designs to life using the latest technologies and best practices. We follow an agile development process, with regular check-ins and a focus on writing clean, scalable code. Rigorous testing ensures a bug-free, high-performance product.</p>
+                </div>
+                <div class="feature-card p-8 animate-on-scroll fade-in-up bg-card" style="animation-delay: 0.4s;">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-xl icon-bg mb-6">
+                        <span class="material-symbols-outlined text-violet-300 text-3xl">rocket_launch</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Launch & Support</h3>
+                    <p class="text-subtle">We handle the deployment process to ensure a smooth launch. After launch, we provide ongoing support and maintenance to keep your product running smoothly and securely. We also offer services to help you scale and add new features as your business grows.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-primary" id="work">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-on-scroll fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-primary">Our Work</h2>
+                <p class="text-subtle mt-4 text-lg max-w-2xl mx-auto">A selection of projects that showcase our expertise.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card p-8 animate-on-scroll fade-in-up bg-card">
+                    <div class="mb-4">
+                        <img src="./projects/llmeter.png" alt="LLMeter Dashboard" class="w-full h-48 object-cover rounded-lg mb-4"/>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">LLMeter</h3>
+                    <p class="text-subtle mb-4">AI Usage Tracking & Analytics Platform that helps organizations monitor AI request metrics, calculate costs by model, and gain insights with detailed stats.</p>
+                    <a href="https://llmeter.app" target="_blank" class="text-violet-400 hover:text-violet-300 font-medium">Visit Project →</a>
+                </div>
+                <div class="feature-card p-8 animate-on-scroll fade-in-up bg-card" style="animation-delay: 0.1s;">
+                    <div class="mb-4">
+                        <img src="./projects/neural-draft.png" alt="Neural Draft Platform" class="w-full h-48 object-cover rounded-lg mb-4"/>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Neural Draft</h3>
+                    <p class="text-subtle mb-4">AI Content Automation Platform that creates complete multimedia campaigns - blogs, social posts, and videos in minutes, not hours.</p>
+                    <a href="https://neural-draft.com" target="_blank" class="text-violet-400 hover:text-violet-300 font-medium">Visit Project →</a>
+                </div>
+                <div class="feature-card p-8 animate-on-scroll fade-in-up bg-card" style="animation-delay: 0.2s;">
+                    <div class="mb-4">
+                        <img src="./projects/pethood.png" alt="Pethood Community" class="w-full h-48 object-cover rounded-lg mb-4"/>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Pethood.io</h3>
+                    <p class="text-subtle mb-4">Pet Community Network where pet owners connect, find pet sitters, discover pet-friendly places, and share experiences with local pet parents.</p>
+                    <a href="https://pethood.io" target="_blank" class="text-violet-400 hover:text-violet-300 font-medium">Visit Project →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-secondary" id="tech">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-on-scroll fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-primary">Technology Stack</h2>
+                <p class="text-subtle mt-4 text-lg max-w-2xl mx-auto">We use a modern, flexible stack to build robust and scalable solutions.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                <div class="flex flex-col items-center justify-center p-6 bg-card border border-strong rounded-xl animate-on-scroll fade-in-up hover:shadow-lg hover:border-violet-500/30 transition-all duration-300">
+                    <img src="./tech-logos/flutter.svg" class="h-12 w-12 mb-4"/>
+                    <p class="text-primary font-semibold">Flutter</p>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-card border border-strong rounded-xl animate-on-scroll fade-in-up hover:shadow-lg hover:border-violet-500/30 transition-all duration-300" style="animation-delay: 0.1s;">
+                    <img src="./tech-logos/nextjs-icon.svg" class="h-12 w-12 mb-4"/>
+                    <p class="text-primary font-semibold">Next.js</p>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-card border border-strong rounded-xl animate-on-scroll fade-in-up hover:shadow-lg hover:border-violet-500/30 transition-all duration-300" style="animation-delay: 0.2s;">
+                    <img src="./tech-logos/vue.svg" class="h-12 w-12 mb-4"/>
+                    <p class="text-primary font-semibold">Vue.js</p>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-card border border-strong rounded-xl animate-on-scroll fade-in-up hover:shadow-lg hover:border-violet-500/30 transition-all duration-300" style="animation-delay: 0.3s;">
+                    <img src="./tech-logos/nodejs-icon.svg" class="h-12 w-12 mb-4"/>
+                    <p class="text-primary font-semibold">Node.js</p>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-card border border-strong rounded-xl animate-on-scroll fade-in-up hover:shadow-lg hover:border-violet-500/30 transition-all duration-300" style="animation-delay: 0.4s;">
+                    <img src="./tech-logos/python.svg" class="h-12 w-12 mb-4"/>
+                    <p class="text-primary font-semibold">Python</p>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-card border border-strong rounded-xl animate-on-scroll fade-in-up hover:shadow-lg hover:border-violet-500/30 transition-all duration-300" style="animation-delay: 0.5s;">
+                    <img src="./tech-logos/laravel.svg" class="h-12 w-12 mb-4"/>
+                    <p class="text-primary font-semibold">Laravel</p>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-card border border-strong rounded-xl animate-on-scroll fade-in-up hover:shadow-lg hover:border-violet-500/30 transition-all duration-300" style="animation-delay: 0.6s;">
+                    <img src="./tech-logos/postgresql.svg" class="h-12 w-12 mb-4"/>
+                    <p class="text-primary font-semibold">PostgreSQL</p>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-card border border-strong rounded-xl animate-on-scroll fade-in-up hover:shadow-lg hover:border-violet-500/30 transition-all duration-300" style="animation-delay: 0.7s;">
+                    <img src="./tech-logos/mongodb-icon.svg" class="h-12 w-12 mb-4"/>
+                    <p class="text-primary font-semibold">MongoDB</p>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-card border border-strong rounded-xl animate-on-scroll fade-in-up hover:shadow-lg hover:border-violet-500/30 transition-all duration-300" style="animation-delay: 0.8s;">
+                    <img src="./tech-logos/docker-icon.svg" class="h-12 w-12 mb-4"/>
+                    <p class="text-primary font-semibold">Docker</p>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-card border border-strong rounded-xl animate-on-scroll fade-in-up hover:shadow-lg hover:border-violet-500/30 transition-all duration-300" style="animation-delay: 0.9s;">
+                    <img src="./tech-logos/kubernetes.svg" class="h-12 w-12 mb-4"/>
+                    <p class="text-primary font-semibold">Kubernetes</p>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-card border border-strong rounded-xl animate-on-scroll fade-in-up hover:shadow-lg hover:border-violet-500/30 transition-all duration-300" style="animation-delay: 1.0s;">
+                    <img src="./tech-logos/n8n.svg" class="h-12 w-12 mb-4"/>
+                    <p class="text-primary font-semibold">n8n</p>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-card border border-strong rounded-xl animate-on-scroll fade-in-up hover:shadow-lg hover:border-violet-500/30 transition-all duration-300" style="animation-delay: 1.1s;">
+                    <img src="./tech-logos/google-cloud.svg" class="h-12 w-12 mb-4"/>
+                    <p class="text-primary font-semibold">Google Cloud</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-primary" id="blog">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-on-scroll fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-primary">From the Blog</h2>
+                <p class="text-subtle mt-4 text-lg max-w-2xl mx-auto">Insights on technology, design, and business.</p>
+            </div>
+            <div class="relative">
+                <div class="flex overflow-x-auto space-x-8 pb-8">
+                    <div class="feature-card p-6 animate-on-scroll fade-in-up bg-card flex-shrink-0 w-80">
+                        <img src="https://blog.neural-draft.com/storage/tenant-assets/8/blog-images/contextual/img_68c1ef0ebb41b_1757540110.png" alt="Amazon Generative AI" class="w-full h-48 object-cover rounded-lg mb-4"/>
+                        <h3 class="text-xl font-bold text-primary mb-3">Understanding Amazon's Generative AI</h3>
+                        <p class="text-subtle">Explore how Amazon's generative AI tools enhance business operations and customer experiences.</p>
+                        <a href="amazon-ai-blog.html" class="font-semibold text-violet-400 hover:text-white transition-colors duration-300">Read more →</a>
+                    </div>
+                    <div class="feature-card p-6 animate-on-scroll fade-in-up bg-card flex-shrink-0 w-80" style="animation-delay: 0.1s;">
+                        <img src="https://blog.neural-draft.com/storage/tenant-assets/8/blog-images/contextual/img_68c1edcd52118_1757539789.png" alt="AI Content Creation 2025" class="w-full h-48 object-cover rounded-lg mb-4"/>
+                        <h3 class="text-xl font-bold text-primary mb-3">The Rise of AI Content Creation</h3>
+                        <p class="text-subtle">A look at the rise of AI content creation and what it means for the future of marketing.</p>
+                        <a href="ai-content-creation-blog.html" class="font-semibold text-violet-400 hover:text-white transition-colors duration-300">Read more →</a>
+                    </div>
+                    <div class="feature-card p-6 animate-on-scroll fade-in-up bg-card flex-shrink-0 w-80" style="animation-delay: 0.2s;">
+                        <img src="https://blog.neural-draft.com/storage/tenant-assets/8/blog-images/contextual/img_68984b64b743a_1754811236.png" alt="AI Multi-Platform Engagement" class="w-full h-48 object-cover rounded-lg mb-4"/>
+                        <h3 class="text-xl font-bold text-primary mb-3">AI-Powered Multi-Platform Engagement</h3>
+                        <p class="text-subtle">How to level up your content strategy with AI-powered multi-platform engagement.</p>
+                        <a href="multi-platform-engagement-blog.html" class="font-semibold text-violet-400 hover:text-white transition-colors duration-300">Read more →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-secondary" id="team">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-on-scroll fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-primary">Our Core Team</h2>
+                <p class="text-subtle mt-4 text-lg max-w-2xl mx-auto">Meet the experts who will bring your vision to life.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="team-card text-center animate-on-scroll fade-in-up bg-card p-6">
+                    <img alt="Vedran Balagović" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" src="./vedran.png"/>
+                    <h4 class="text-xl font-bold text-primary">Vedran Balagović</h4>
+                    <p class="text-violet-400 font-medium">Chief Technology Officer</p>
+                    <a href="https://linkedin.com/in/vedran-balagovic" class="text-subtle hover:text-primary mt-4 inline-block">LinkedIn</a>
+                </div>
+                <div class="team-card text-center animate-on-scroll fade-in-up bg-card p-6" style="animation-delay: 0.1s;">
+                    <img alt="Andres Herrera" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" src="./andres.jpeg"/>
+                    <h4 class="text-xl font-bold text-primary">Andres Herrera</h4>
+                    <p class="text-violet-400 font-medium">Senior Data & Integrations</p>
+                    <a href="https://linkedin.com/in/jaherrera1" class="text-subtle hover:text-primary mt-4 inline-block">LinkedIn</a>
+                </div>
+                <div class="team-card text-center animate-on-scroll fade-in-up bg-card p-6" style="animation-delay: 0.2s;">
+                    <img alt="Junes El-Sayyid" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" src="./junes.jpeg"/>
+                    <h4 class="text-xl font-bold text-primary">Junes El-Sayyid</h4>
+                    <p class="text-violet-400 font-medium">Startup & Legal Advisor</p>
+                    <a href="https://linkedin.com/in/juneselsayyid" class="text-subtle hover:text-primary mt-4 inline-block">LinkedIn</a>
+                </div>
+                <div class="team-card text-center animate-on-scroll fade-in-up bg-card p-6" style="animation-delay: 0.3s;">
+                    <img alt="Bruno Hozdić" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" src="./bruno.jpeg"/>
+                    <h4 class="text-xl font-bold text-primary">Bruno Hozdić</h4>
+                    <p class="text-violet-400 font-medium">Marketing Manager</p>
+                    <a href="https://linkedin.com/in/bruno-hozdic-279110147" class="text-subtle hover:text-primary mt-4 inline-block">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-primary" id="contact">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-on-scroll fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-primary">Get In Touch</h2>
+                <p class="text-subtle mt-4 text-lg max-w-2xl mx-auto">Have a project in mind? We'd love to hear from you.</p>
+            </div>
+            <div class="max-w-2xl mx-auto bg-card border border-strong rounded-xl p-8">
+                <form class="animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-subtle">Name</label>
+                            <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md bg-primary border-strong shadow-sm focus:border-violet-500 focus:ring-violet-500 sm:text-sm text-primary">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-subtle">Email</label>
+                            <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md bg-primary border-strong shadow-sm focus:border-violet-500 focus:ring-violet-500 sm:text-sm text-primary">
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label for="enquiry" class="block text-sm font-medium text-subtle">Type of Enquiry</label>
+                        <select id="enquiry" name="enquiry" class="mt-1 block w-full rounded-md bg-primary border-strong shadow-sm focus:border-violet-500 focus:ring-violet-500 sm:text-sm text-primary">
+                            <option>Consulting</option>
+                            <option>Data Analysis</option>
+                            <option>Full-Stack Development</option>
+                            <option>Marketing</option>
+                            <option>AI/ML</option>
+                        </select>
+                    </div>
+                    <div class="mt-6">
+                        <label for="budget" class="block text-sm font-medium text-subtle">Budget</label>
+                        <select id="budget" name="budget" class="mt-1 block w-full rounded-md bg-primary border-strong shadow-sm focus:border-violet-500 focus:ring-violet-500 sm:text-sm text-primary">
+                            <option>$10,000 - $20,000</option>
+                            <option>$20,000 - $50,000</option>
+                            <option>$50,000+</option>
+                        </select>
+                    </div>
+                    <div class="mt-6">
+                        <label for="message" class="block text-sm font-medium text-subtle">Message</label>
+                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md bg-primary border-strong shadow-sm focus:border-violet-500 focus:ring-violet-500 sm:text-sm text-primary"></textarea>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <button type="submit" class="cta-button bg-violet-500 hover:bg-violet-600 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-xl shadow-violet-500/20">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="bg-secondary border-t border-strong">
+    <div class="container mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center space-x-3 mb-4">
+                    <img alt="Axerate Logo" class="h-10 w-auto" src="./logo.png">
+                    <span class="text-primary text-2xl font-bold tracking-wider"></span>
+                </div>
+                <p class="text-subtle mb-6 max-w-md">Building the future, one venture at a time. We provide end-to-end digital solutions for ambitious startups and enterprises.</p>
+                <div class="flex space-x-4">
+                    <a href="https://twitter.com/axerate" target="_blank" class="flex items-center justify-center w-10 h-10 bg-card border border-strong rounded-lg text-subtle hover:text-violet-400 hover:border-violet-500/30 transition-all duration-300">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/company/axerate" target="_blank" class="flex items-center justify-center w-10 h-10 bg-card border border-strong rounded-lg text-subtle hover:text-violet-400 hover:border-violet-500/30 transition-all duration-300">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/axerate" target="_blank" class="flex items-center justify-center w-10 h-10 bg-card border border-strong rounded-lg text-subtle hover:text-violet-400 hover:border-violet-500/30 transition-all duration-300">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.300 24 12c0-6.627-5.374-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-primary font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#process" class="text-subtle hover:text-violet-400 transition-colors">Our Process</a></li>
+                    <li><a href="#work" class="text-subtle hover:text-violet-400 transition-colors">Our Work</a></li>
+                    <li><a href="#tech" class="text-subtle hover:text-violet-400 transition-colors">Technology</a></li>
+                    <li><a href="main.html" class="text-subtle hover:text-violet-400 transition-colors">Startup Studio</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-primary font-semibold mb-4">Contact</h4>
+                <ul class="space-y-2">
+                    <li><a href="#contact" class="text-subtle hover:text-violet-400 transition-colors">Get In Touch</a></li>
+                    <li><a href="blog.html" class="text-subtle hover:text-violet-400 transition-colors">Blog</a></li>
+                    <li><span class="text-subtle">hello@axerate.com</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-strong pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-subtle text-sm">© 2025 Axerate. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6 text-sm">
+                    <a href="#" class="text-subtle hover:text-violet-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-subtle hover:text-violet-400 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "general_inquiries",
+  "info": {
+    "singularName": "general-inquiry",
+    "pluralName": "general-inquiries",
+    "displayName": "General Inquiry",
+    "description": "General contact form submissions from the main page"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "enquiryType": {
+      "type": "enumeration",
+      "enum": [
+        "Consulting",
+        "Data Analysis",
+        "Full-Stack Development",
+        "Marketing",
+        "AI/ML"
+      ],
+      "required": true
+    },
+    "budget": {
+      "type": "enumeration",
+      "enum": [
+        "budget_10k_20k",
+        "budget_20k_50k",
+        "budget_50k_plus"
+      ],
+      "required": true
+    },
+    "message": {
+      "type": "text",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "new",
+        "contacted",
+        "in-progress",
+        "completed",
+        "archived"
+      ],
+      "default": "new"
+    },
+    "notes": {
+      "type": "text"
+    }
+  }
+}

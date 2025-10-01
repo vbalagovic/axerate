@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Axerate: A creative studio for building and launching innovative startups." name="description" />
+    <title>Axerate - Single Blog</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <link href="styles.css" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+</head>
+<body class="antialiased bg-primary text-primary">
+<header class="bg-header backdrop-blur-lg sticky top-0 z-50 border-b border-header">
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<a class="flex items-center space-x-3" href="index.html">
+<img alt="Axerate Logo" class="h-10 w-auto" src="./logo.png">
+<span class="text-2xl font-bold text-primary tracking-wider"></span>
+</a>
+<div class="hidden md:flex items-center space-x-8">
+<a class="nav-link text-subtle hover:text-primary text-sm font-medium" href="index.html">Home</a>
+<a class="nav-link text-subtle hover:text-primary text-sm font-medium" href="main.html">Startup Studio</a>
+<a class="nav-link text-subtle hover:text-primary text-sm font-medium" href="blog.html">Blog</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-subtle hover:text-primary focus:outline-none" id="theme-toggle">
+<span class="material-symbols-outlined dark:hidden">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:inline">light_mode</span>
+</button>
+<a class="hidden md:inline-block cta-button bg-violet-500 hover:bg-violet-600 text-white font-semibold py-2 px-6 rounded-lg shadow-lg shadow-violet-500/20" href="#contact">
+                    Get In Touch
+                </a>
+<button class="md:hidden text-subtle hover:text-primary focus:outline-none z-50" id="menu-btn">
+<span class="material-symbols-outlined" id="menu-open-icon">menu</span>
+<span class="material-symbols-outlined hidden" id="menu-close-icon">close</span>
+</button>
+</div>
+</nav>
+<div class="mobile-menu absolute top-0 left-0 w-full bg-primary -translate-y-full md:hidden" id="mobile-menu">
+<div class="flex flex-col items-center justify-center h-screen space-y-8">
+<a class="text-2xl font-semibold text-primary" href="index.html">Home</a>
+<a class="text-2xl font-semibold text-primary" href="main.html">Startup Studio</a>
+<a class="text-2xl font-semibold text-primary" href="blog.html">Blog</a>
+<a class="text-2xl font-semibold text-primary cta-button bg-violet-500 hover:bg-violet-600 text-white py-3 px-8 rounded-lg" href="#contact">Get In Touch</a>
+</div>
+</div>
+</header>
+<main class="py-24">
+    <div class="container mx-auto px-6">
+        <div class="max-w-3xl mx-auto">
+            <img src="https://blog.neural-draft.com/storage/tenant-assets/8/blog-images/contextual/img_68c1ef0ebb41b_1757540110.png" alt="Amazon Generative AI" class="rounded-lg mb-6">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="px-3 py-1 bg-violet-500/10 text-violet-300 rounded-full text-sm font-medium">Technology</span>
+                <span class="text-subtle text-sm">September 10, 2025</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-primary mb-6">Understanding Amazon's Generative AI: Tools and Applications</h1>
+            <div class="prose prose-invert max-w-none">
+                <p class="text-subtle text-lg mb-6">Amazon's been making some pretty amazing moves in the world of generative AI lately. Seriously, it's like every time I turn around, they're coming up with new ways to use this tech. You know what I mean? Generative AI is this cool thing that helps create all kinds of content using machine learning. By 2025, it's shaping up to change everything—from retail to cloud stuff. It's wild!</p>
+
+                <p class="text-subtle mb-6">So, generative AI is basically all about algorithms that whip up new content based on what's already out there. Amazon's really tapped into this to make shopping better, run things smoother, and just come up with cooler products. I'm gonna break down a few key tools and how they're being used—trust me, it's interesting stuff.</p>
+
+                <h2 class="text-2xl font-bold text-primary mt-12 mb-6">1. Key Tools and Technologies</h2>
+                <p class="text-subtle mb-6">And let's talk about the tools—Amazon's got some big guns in the generative AI world. Here are a few you should know about:</p>
+
+                <ul class="text-subtle mb-8 space-y-4 pl-0">
+                    <li class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-2 h-2 bg-violet-400 rounded-full mt-3"></span>
+                        <div>
+                            <strong class="text-primary">AWS SageMaker:</strong> Okay, this one's a game changer. It's a managed service that helps you build, train, and roll out machine learning models. And it's got built-in algorithms for those generative tasks—super handy, right?
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-2 h-2 bg-violet-400 rounded-full mt-3"></span>
+                        <div>
+                            <strong class="text-primary">Amazon Polly:</strong> This is cool—it's a text-to-speech tool that uses deep learning to make speech sound real. You can turn text into audio, which is awesome for making things more accessible. Seriously, how great is that for podcasts or e-learning?
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-2 h-2 bg-violet-400 rounded-full mt-3"></span>
+                        <div>
+                            <strong class="text-primary">Amazon Lex:</strong> So here's where it gets fun. This tool helps developers create chatty interfaces—like, think voice and text interaction. It's what powers chatbots and virtual assistants, making customer interactions way more personal.
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-2 h-2 bg-violet-400 rounded-full mt-3"></span>
+                        <div>
+                            <strong class="text-primary">Amazon Rekognition:</strong> Oh, and this one's neat too! It's a computer vision service that can analyze images and videos. You could use it to pull insights from visual content—like spotting faces or identifying objects. It's kinda like magic!
+                        </div>
+                    </li>
+                </ul>
+
+                <h2 class="text-2xl font-bold text-primary mt-12 mb-6">2. Applications of Generative AI</h2>
+                <p class="text-subtle mb-6">But wait, there's more! Amazon's generative AI isn't just sitting around looking pretty. It's doing real work across different industries. Here are some examples that might blow your mind:</p>
+
+                <ul class="text-subtle mb-8 space-y-4 pl-0">
+                    <li class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-2 h-2 bg-violet-400 rounded-full mt-3"></span>
+                        <div>
+                            <strong class="text-primary">Retail Optimization:</strong> Retailers can use this tech to figure out what customers might like and give them personalized suggestions. Imagine an online clothing shop analyzing your past buys to suggest outfits—pretty slick, right?
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-2 h-2 bg-violet-400 rounded-full mt-3"></span>
+                        <div>
+                            <strong class="text-primary">Content Creation:</strong> Businesses can totally use Amazon Polly to turn written stuff into audio. So, if you're into making podcasts or jazzing up e-learning, this is a lifesaver!
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-2 h-2 bg-violet-400 rounded-full mt-3"></span>
+                        <div>
+                            <strong class="text-primary">Customer Support:</strong> Chatbots powered by Amazon Lex are a game changer for handling customer questions. They can respond instantly, which definitely helps keep customers happy.
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="bg-card border border-strong rounded-xl p-6 my-8">
+                    <h3 class="text-lg font-bold text-primary mb-3">Key Takeaways</h3>
+                    <p class="text-subtle">Amazon's generative AI tools are transforming how businesses operate across multiple industries. From enhancing customer experiences to streamlining operations, these technologies are becoming essential for modern enterprises looking to stay competitive in 2025 and beyond.</p>
+                </div>
+
+                <div class="flex items-center gap-4 mt-12 pt-6 border-t border-strong">
+                    <span class="text-sm text-subtle">Tags:</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-violet-500/10 text-violet-300 rounded-full text-sm">Generative AI</span>
+                        <span class="px-3 py-1 bg-violet-500/10 text-violet-300 rounded-full text-sm">Amazon Web Services</span>
+                        <span class="px-3 py-1 bg-violet-500/10 text-violet-300 rounded-full text-sm">Machine Learning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="bg-primary border-t border-strong">
+    <div class="container mx-auto px-6 py-10">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-6 md:mb-0">
+                <img alt="Axerate Logo" class="h-8 w-auto" src="./logo.png">
+                <span class="text-primary text-xl font-semibold">Axerate</span>
+            </div>
+            <div class="text-subtle text-center md:text-left mb-6 md:mb-0">
+                <p>Building the future, one venture at a time.</p>
+            </div>
+            <div class="flex space-x-6">
+                <a class="text-subtle hover:text-primary" href="#"><svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                </svg></a>
+                <a class="text-subtle hover:text-primary" href="#"><svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path clip-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.225-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.638 2H6.362A4.362 4.362 0 002 6.362v11.276A4.362 4.362 0 006.362 22h11.276A4.362 4.362 0 0022 17.638V6.362A4.362 4.362 0 0017.638 2z" fill-rule="evenodd"></path>
+                </svg></a>
+            </div>
+        </div>
+        <div class="text-center text-subtle mt-10 text-sm">
+            © 2025 Axerate. All rights reserved.
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "kind": "singleType",
+  "collectionName": "startup_hero",
+  "info": {
+    "singularName": "startup-hero",
+    "pluralName": "startup-heros",
+    "displayName": "Startup Studio Hero",
+    "description": "Startup Studio page hero section content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "text",
+      "required": true
+    },
+    "subtitle": {
+      "type": "text",
+      "required": true
+    },
+    "ctaButtonText": {
+      "type": "string",
+      "required": true
+    },
+    "ctaButtonLink": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

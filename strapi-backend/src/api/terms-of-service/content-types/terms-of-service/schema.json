@@ -1,0 +1,29 @@
+{
+  "kind": "singleType",
+  "collectionName": "terms_of_service",
+  "info": {
+    "singularName": "terms-of-service",
+    "pluralName": "terms-of-services",
+    "displayName": "Terms of Service",
+    "description": "Terms of Service content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "Terms of Service"
+    },
+    "lastUpdated": {
+      "type": "date",
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

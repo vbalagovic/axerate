@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "partnerships",
+  "info": {
+    "singularName": "partnership",
+    "pluralName": "partnerships",
+    "displayName": "Partnership",
+    "description": "Strategic partnerships"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "logo": {
+      "type": "string",
+      "required": false
+    },
+    "tags": {
+      "type": "json",
+      "required": false
+    },
+    "link": {
+      "type": "string",
+      "required": false
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

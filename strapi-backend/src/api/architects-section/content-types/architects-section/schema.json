@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "architects_sections",
+  "info": {
+    "singularName": "architects-section",
+    "pluralName": "architects-sections",
+    "displayName": "Architects Section",
+    "description": "Architects of Ambition section content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "text",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
