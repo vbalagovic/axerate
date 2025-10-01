@@ -67,7 +67,21 @@ jobs:
               git checkout -b main origin/main
             else
               echo "🔄 Pulling latest code..."
-              git pull origin main
+
+              # Check for untracked files that would conflict
+              if ! git pull origin main 2>/dev/null; then
+                echo "⚠️  Merge conflict detected, cleaning up..."
+
+                # Backup conflicting files
+                mkdir -p ~/backups
+                tar -czf ~/backups/conflict-backup-$(date +%Y%m%d-%H%M%S).tar.gz docker-compose.yml nginx strapi-backend/package-lock.json 2>/dev/null || true
+
+                # Remove conflicting files
+                rm -rf docker-compose.yml nginx/nginx.conf strapi-backend/package-lock.json 2>/dev/null || true
+
+                # Try pull again
+                git pull origin main
+              fi
             fi
 
             # Create .env files
