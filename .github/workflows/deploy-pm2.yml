@@ -123,9 +123,7 @@ jobs:
             npm install  # Install ALL dependencies (including @types/node for build)
 
             # Build with appropriate memory limit for server (2.5GB for 4GB RAM server)
-            # Skip admin build to avoid memory issues - use --no-admin flag
-            export NODE_OPTIONS="--max-old-space-size=2560"
-            npx strapi build --no-admin
+            npx strapi build
 
             npm prune --production  # Remove dev dependencies after build
             cd ..
