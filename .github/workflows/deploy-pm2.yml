@@ -47,9 +47,17 @@ jobs:
             # Navigate to deployment directory
             cd /var/www/html
 
-            # Pull latest code
-            echo "🔄 Pulling latest code..."
-            git pull origin main || git clone git@github.com:vbalagovic/axerate.git . && git checkout main
+            # Initialize git repo if needed
+            if [ ! -d .git ]; then
+              echo "🔧 Initializing git repository..."
+              git init
+              git remote add origin git@github.com:vbalagovic/axerate.git
+              git fetch origin
+              git checkout -b main origin/main
+            else
+              echo "🔄 Pulling latest code..."
+              git pull origin main
+            fi
 
             # Create .env files
             echo "📝 Creating environment files..."
