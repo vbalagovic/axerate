@@ -39,8 +39,18 @@ jobs:
           STRAPI_URL: ${{ secrets.STRAPI_URL }}
           STRAPI_PROXY: ${{ secrets.STRAPI_PROXY || 'true' }}
         run: |
-          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST << 'ENDSSH'
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST << ENDSSH
             set -e
+
+            # Export environment variables for use in this session
+            export STRAPI_APP_KEYS="$STRAPI_APP_KEYS"
+            export STRAPI_API_TOKEN_SALT="$STRAPI_API_TOKEN_SALT"
+            export STRAPI_ADMIN_JWT_SECRET="$STRAPI_ADMIN_JWT_SECRET"
+            export STRAPI_TRANSFER_TOKEN_SALT="$STRAPI_TRANSFER_TOKEN_SALT"
+            export STRAPI_JWT_SECRET="$STRAPI_JWT_SECRET"
+            export STRAPI_API_TOKEN="$STRAPI_API_TOKEN"
+            export STRAPI_URL="$STRAPI_URL"
+            export STRAPI_PROXY="$STRAPI_PROXY"
 
             echo "📦 Deploying to /var/www/html..."
 
