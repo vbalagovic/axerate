@@ -1,0 +1,139 @@
+name: Deploy with PM2 to Linux VPC
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Linux VPC
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
+
+      - name: Deploy Application
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          STRAPI_APP_KEYS: ${{ secrets.STRAPI_APP_KEYS }}
+          STRAPI_API_TOKEN_SALT: ${{ secrets.STRAPI_API_TOKEN_SALT }}
+          STRAPI_ADMIN_JWT_SECRET: ${{ secrets.STRAPI_ADMIN_JWT_SECRET }}
+          STRAPI_TRANSFER_TOKEN_SALT: ${{ secrets.STRAPI_TRANSFER_TOKEN_SALT }}
+          STRAPI_JWT_SECRET: ${{ secrets.STRAPI_JWT_SECRET }}
+          STRAPI_API_TOKEN: ${{ secrets.STRAPI_API_TOKEN }}
+          STRAPI_URL: ${{ secrets.STRAPI_URL }}
+          STRAPI_PROXY: ${{ secrets.STRAPI_PROXY || 'true' }}
+        run: |
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST << 'ENDSSH'
+            set -e
+
+            echo "📦 Deploying to /var/www/html..."
+
+            # Navigate to deployment directory
+            cd /var/www/html
+
+            # Pull latest code
+            echo "🔄 Pulling latest code..."
+            git pull origin main || git clone git@github.com:vbalagovic/axerate.git . && git checkout main
+
+            # Create .env files
+            echo "📝 Creating environment files..."
+
+            # Backend .env
+            cat > strapi-backend/.env << EOF
+          NODE_ENV=production
+          HOST=0.0.0.0
+          PORT=1337
+          APP_KEYS=$STRAPI_APP_KEYS
+          API_TOKEN_SALT=$STRAPI_API_TOKEN_SALT
+          ADMIN_JWT_SECRET=$STRAPI_ADMIN_JWT_SECRET
+          TRANSFER_TOKEN_SALT=$STRAPI_TRANSFER_TOKEN_SALT
+          JWT_SECRET=$STRAPI_JWT_SECRET
+          STRAPI_URL=$STRAPI_URL
+          STRAPI_PROXY=$STRAPI_PROXY
+          DATABASE_CLIENT=sqlite
+          DATABASE_FILENAME=.tmp/data.db
+          EOF
+
+            # Frontend .env
+            cat > axerate-nextjs/.env << EOF
+          NODE_ENV=production
+          NEXT_PUBLIC_STRAPI_URL=$STRAPI_URL
+          STRAPI_API_URL=http://localhost:1337
+          STRAPI_API_TOKEN=$STRAPI_API_TOKEN
+          EOF
+
+            # Install dependencies and build
+            echo "📦 Installing dependencies..."
+
+            # Backend
+            cd strapi-backend
+            npm install --production
+            npm run build
+            cd ..
+
+            # Frontend
+            cd axerate-nextjs
+            npm install
+            npm run build
+            cd ..
+
+            # Start/Restart with PM2
+            echo "🚀 Starting applications with PM2..."
+
+            # Install PM2 if not installed
+            if ! command -v pm2 &> /dev/null; then
+                echo "Installing PM2..."
+                npm install -g pm2
+            fi
+
+            # Start or restart applications
+            pm2 delete strapi 2>/dev/null || true
+            pm2 delete nextjs 2>/dev/null || true
+
+            cd /var/www/html/strapi-backend
+            pm2 start npm --name "strapi" -- start
+
+            cd /var/www/html/axerate-nextjs
+            pm2 start npm --name "nextjs" -- start
+
+            # Save PM2 configuration
+            pm2 save
+
+            # Setup PM2 startup script
+            pm2 startup systemd -u $USER --hp $HOME || true
+
+            # Show status
+            echo "✅ Deployment complete!"
+            pm2 list
+          ENDSSH
+
+      - name: Health Check
+        run: |
+          sleep 30
+          curl -f http://${{ secrets.SSH_HOST }}:3000 || exit 1
+          curl -f http://${{ secrets.SSH_HOST }}:1337/_health || exit 1
+
+      - name: Notify deployment status
+        if: always()
+        run: |
+          if [ ${{ job.status }} == 'success' ]; then
+            echo "✅ Deployment successful"
+          else
+            echo "❌ Deployment failed"
+          fi
