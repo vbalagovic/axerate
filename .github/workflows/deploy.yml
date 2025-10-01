@@ -101,6 +101,15 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
 
+      - name: Copy deployment files to server
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+        run: |
+          # Copy docker-compose.yml to server
+          scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no docker-compose.yml $SSH_USER@$SSH_HOST:/tmp/
+          scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -r nginx $SSH_USER@$SSH_HOST:/tmp/
+
       - name: Deploy to VPC
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
@@ -116,6 +125,14 @@ jobs:
           STRAPI_PROXY: ${{ secrets.STRAPI_PROXY || 'true' }}
         run: |
           ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST << 'ENDSSH'
+            # Create deployment directory with proper permissions
+            sudo mkdir -p /var/www/html
+            sudo chown -R $USER:$USER /var/www/html
+
+            # Copy files from tmp to deployment directory
+            mv /tmp/docker-compose.yml /var/www/html/
+            mv /tmp/nginx /var/www/html/ 2>/dev/null || true
+
             # Navigate to deployment directory
             cd /var/www/html || exit 1
 
