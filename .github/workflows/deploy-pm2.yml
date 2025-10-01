@@ -116,8 +116,9 @@ jobs:
 
             # Backend
             cd strapi-backend
-            npm install --production
+            npm install  # Install ALL dependencies (including @types/node for build)
             npm run build
+            npm prune --production  # Remove dev dependencies after build
             cd ..
 
             # Frontend
