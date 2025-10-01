@@ -111,13 +111,35 @@ jobs:
           STRAPI_API_TOKEN=$STRAPI_API_TOKEN
           EOF
 
+            # Setup swap space if needed (for low memory servers)
+            if [ $(free -m | awk 'NR==2 {print $2}') -lt 3000 ]; then
+              echo "💾 Low memory detected, setting up swap..."
+              if [ ! -f /swapfile ]; then
+                sudo fallocate -l 2G /swapfile 2>/dev/null || sudo dd if=/dev/zero of=/swapfile bs=1M count=2048
+                sudo chmod 600 /swapfile
+                sudo mkswap /swapfile
+                sudo swapon /swapfile
+                echo "✅ Swap enabled (2GB)"
+              else
+                sudo swapon /swapfile 2>/dev/null || echo "Swap already active"
+              fi
+            fi
+
             # Install dependencies and build
             echo "📦 Installing dependencies..."
 
             # Backend
             cd strapi-backend
+
+            # Clear cache to free memory
+            rm -rf .cache build dist node_modules/.cache 2>/dev/null || true
+
             npm install  # Install ALL dependencies (including @types/node for build)
+
+            # Build with appropriate memory limit for server (1.5GB for 2GB RAM server)
+            export NODE_OPTIONS="--max-old-space-size=1536"
             npm run build
+
             npm prune --production  # Remove dev dependencies after build
             cd ..
 
