@@ -107,23 +107,9 @@ jobs:
             cat > axerate-nextjs/.env << EOF
           NODE_ENV=production
           NEXT_PUBLIC_STRAPI_URL=$STRAPI_URL
-          STRAPI_API_URL=http://localhost:1337
+          STRAPI_API_URL=$STRAPI_URL
           STRAPI_API_TOKEN=$STRAPI_API_TOKEN
           EOF
-
-            # Setup swap space if needed (for low memory servers)
-            if [ $(free -m | awk 'NR==2 {print $2}') -lt 3000 ]; then
-              echo "💾 Low memory detected, setting up swap..."
-              if [ ! -f /swapfile ]; then
-                sudo fallocate -l 2G /swapfile 2>/dev/null || sudo dd if=/dev/zero of=/swapfile bs=1M count=2048
-                sudo chmod 600 /swapfile
-                sudo mkswap /swapfile
-                sudo swapon /swapfile
-                echo "✅ Swap enabled (2GB)"
-              else
-                sudo swapon /swapfile 2>/dev/null || echo "Swap already active"
-              fi
-            fi
 
             # Install dependencies and build
             echo "📦 Installing dependencies..."
@@ -137,10 +123,9 @@ jobs:
             npm install  # Install ALL dependencies (including @types/node for build)
 
             # Build with appropriate memory limit for server (2.5GB for 4GB RAM server)
-            # Skip admin build to avoid memory issues - admin can be built separately if needed
+            # Skip admin build to avoid memory issues - use --no-admin flag
             export NODE_OPTIONS="--max-old-space-size=2560"
-            export STRAPI_DISABLE_ADMIN_BUILD=true
-            npm run build
+            npx strapi build --no-admin
 
             npm prune --production  # Remove dev dependencies after build
             cd ..
