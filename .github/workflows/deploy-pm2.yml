@@ -142,6 +142,7 @@ jobs:
             # Frontend
             cd axerate-nextjs
             npm install
+            npm install @strapi/blocks-react-renderer --ignore-scripts
             npm run build
             cd ..
 

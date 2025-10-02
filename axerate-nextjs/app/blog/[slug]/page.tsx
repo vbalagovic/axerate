@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { getBlogPost } from "@/lib/strapi";
 import { Metadata } from 'next';
+import BlockRenderer from "@/components/BlockRenderer";
+import type { BlocksContent } from "@strapi/blocks-react-renderer";
 
 // Fallback blog posts data
 const fallbackBlogPosts: Record<string, any> = {
@@ -217,8 +219,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                        prose-table:border-collapse prose-table:border prose-table:border-strong
                        prose-th:bg-muted prose-th:border prose-th:border-strong prose-th:p-3
                        prose-td:border prose-td:border-strong prose-td:p-3"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+          >
+            <BlockRenderer content={post.content as BlocksContent} />
+          </div>
 
           <div className="flex items-center gap-4 mt-12 pt-8 border-t border-strong">
             <span className="text-sm font-medium text-subtle">Tags:</span>
