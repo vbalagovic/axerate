@@ -84,12 +84,11 @@ jobs:
 
                 # Backup conflicting files
                 mkdir -p ~/backups
-                tar -czf ~/backups/conflict-backup-$(date +%Y%m%d-%H%M%S).tar.gz docker-compose.yml nginx strapi-backend/package-lock.json 2>/dev/null || true
+                tar -czf ~/backups/conflict-backup-$(date +%Y%m%d-%H%M%S).tar.gz docker-compose.yml nginx strapi-backend/package-lock.json strapi-backend/package.json 2>/dev/null || true
 
-                # Remove conflicting files
-                rm -rf docker-compose.yml nginx/nginx.conf strapi-backend/package-lock.json 2>/dev/null || true
-
-                # Try pull again
+                # Reset to clean state and force pull
+                git reset --hard HEAD
+                git clean -fd
                 git pull origin main
               fi
             fi
