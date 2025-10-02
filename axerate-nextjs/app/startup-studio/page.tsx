@@ -18,25 +18,23 @@ export async function generateMetadata(): Promise<Metadata> {
     };
   }
 
-  const attrs = metadata.attributes;
-
   return {
-    title: attrs.title,
-    description: attrs.description,
-    keywords: attrs.keywords,
+    title: metadata.title,
+    description: metadata.description,
+    keywords: metadata.keywords,
     openGraph: {
-      title: attrs.ogTitle || attrs.title,
-      description: attrs.ogDescription || attrs.description,
-      images: attrs.ogImage ? [attrs.ogImage] : [],
+      title: metadata.ogTitle || metadata.title,
+      description: metadata.ogDescription || metadata.description,
+      images: metadata.ogImage ? [metadata.ogImage] : [],
     },
     twitter: {
-      card: attrs.twitterCard || 'summary_large_image',
-      title: attrs.ogTitle || attrs.title,
-      description: attrs.ogDescription || attrs.description,
-      images: attrs.ogImage ? [attrs.ogImage] : [],
+      card: metadata.twitterCard || 'summary_large_image',
+      title: metadata.ogTitle || metadata.title,
+      description: metadata.ogDescription || metadata.description,
+      images: metadata.ogImage ? [metadata.ogImage] : [],
     },
     alternates: {
-      canonical: attrs.canonicalUrl,
+      canonical: metadata.canonicalUrl,
     },
   };
 }

@@ -199,7 +199,20 @@ export async function getPageMetadata(pageName: string) {
     const data: any = await fetchAPI(
       `/page-metadatas?filters[pageName][$eq]=${pageName}`
     );
-    return data?.data?.[0] || null;
+    const item = data?.data?.[0];
+    if (!item) return null;
+
+    // Return the attributes directly for easier access
+    return {
+      title: item.attributes.title,
+      description: item.attributes.description,
+      keywords: item.attributes.keywords,
+      ogTitle: item.attributes.ogTitle,
+      ogDescription: item.attributes.ogDescription,
+      ogImage: item.attributes.ogImage,
+      twitterCard: item.attributes.twitterCard,
+      canonicalUrl: item.attributes.canonicalUrl,
+    };
   } catch (error) {
     console.error('Error fetching page metadata:', error);
     return null;
