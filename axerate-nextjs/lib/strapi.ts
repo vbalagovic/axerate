@@ -154,14 +154,30 @@ export async function getBlogPost(slug: string) {
       `/blog-posts?filters[slug][$eq]=${slug}&populate=*`
     );
 
-    const item = data?.data?.[0];
-    if (!item) return null;
+    let item = data?.data;
 
-    // Convert Markdown to HTML if needed
-    const content = item.attributes.content || item.content || '';
-    const isMarkdown = content.trim().startsWith('#') || content.includes('\n##');
+    // Handle both array and single object responses
+    if (Array.isArray(item)) {
+      item = item.find((post: any) => post.slug === slug || post.attributes?.slug === slug) || item[0];
+    }
 
-    // For now, wrap markdown in pre tag or convert basic markdown
+    if (!item) {
+      console.log('❌ No blog post found for slug:', slug);
+      return null;
+    }
+
+    // Handle both nested attributes and flat structure
+    const attrs = item.attributes || item;
+
+    // Safely get content
+    const content = attrs.content || '';
+    if (!content) {
+      console.log('⚠️ No content found for blog post:', attrs.title);
+    }
+
+    const isMarkdown = content && (content.trim().startsWith('#') || content.includes('\n##'));
+
+    // Convert markdown to HTML if needed
     const htmlContent = isMarkdown
       ? content
           .replace(/^# (.*$)/gim, '<h1>$1</h1>')
@@ -180,15 +196,15 @@ export async function getBlogPost(slug: string) {
     return {
       id: item.id,
       attributes: {
-        title: item.attributes?.title || item.title,
-        description: item.attributes?.description || item.description,
+        title: attrs.title || '',
+        description: attrs.description || '',
         content: htmlContent,
-        author: item.attributes?.author || item.author,
-        readTime: item.attributes?.readTime || item.readTime,
-        tags: item.attributes?.tags || item.tags || [],
-        slug: item.attributes?.slug || item.slug,
-        publishedDate: item.attributes?.publishedDate || item.publishedDate,
-        featuredImage: item.attributes?.featuredImage || item.featuredImage,
+        author: attrs.author || 'Axerate Team',
+        readTime: attrs.readTime || '5 min read',
+        tags: attrs.tags || [],
+        slug: attrs.slug || slug,
+        publishedDate: attrs.publishedDate || new Date().toISOString(),
+        featuredImage: attrs.featuredImage,
       }
     };
   } catch (error) {
