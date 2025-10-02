@@ -237,16 +237,19 @@ export async function getPageMetadata(pageName: string) {
     const item = data?.data?.[0];
     if (!item) return null;
 
+    // Strapi 5 returns data without .attributes wrapper
+    const attrs = item.attributes || item;
+
     // Return the attributes directly for easier access
     return {
-      title: item.attributes.title,
-      description: item.attributes.description,
-      keywords: item.attributes.keywords,
-      ogTitle: item.attributes.ogTitle,
-      ogDescription: item.attributes.ogDescription,
-      ogImage: item.attributes.ogImage,
-      twitterCard: item.attributes.twitterCard,
-      canonicalUrl: item.attributes.canonicalUrl,
+      title: attrs.title,
+      description: attrs.description,
+      keywords: attrs.keywords,
+      ogTitle: attrs.ogTitle,
+      ogDescription: attrs.ogDescription,
+      ogImage: attrs.ogImage,
+      twitterCard: attrs.twitterCard,
+      canonicalUrl: attrs.canonicalUrl,
     };
   } catch (error) {
     console.error('Error fetching page metadata:', error);
@@ -351,14 +354,17 @@ export async function getFooterConfig(pageName: 'main' | 'startup-studio') {
     const item = data?.data?.[0];
     if (!item) return null;
 
+    // Strapi 5 returns data without .attributes wrapper
+    const attrs = item.attributes || item;
+
     return {
-      companyDescription: item.attributes.companyDescription,
-      servicesTitle: item.attributes.servicesTitle,
-      servicesLinks: item.attributes.servicesLinks,
-      contactTitle: item.attributes.contactTitle,
-      contactLinks: item.attributes.contactLinks,
-      socialLinks: item.attributes.socialLinks,
-      copyrightText: item.attributes.copyrightText,
+      companyDescription: attrs.companyDescription,
+      servicesTitle: attrs.servicesTitle,
+      servicesLinks: attrs.servicesLinks,
+      contactTitle: attrs.contactTitle,
+      contactLinks: attrs.contactLinks,
+      socialLinks: attrs.socialLinks,
+      copyrightText: attrs.copyrightText,
     };
   } catch (error) {
     console.error('Error fetching footer config:', error);
