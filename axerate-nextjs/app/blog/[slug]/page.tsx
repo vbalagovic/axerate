@@ -97,8 +97,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     post = {
       title: attrs.title,
       description: attrs.description,
-      image: attrs.featuredImage?.data?.attributes?.url
-        ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${attrs.featuredImage.data.attributes.url}`
+      image: attrs.featuredImage?.url
+        ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${attrs.featuredImage.url}`
         : null,
     };
   } else {
@@ -143,8 +143,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     post = {
       title: attrs.title,
       content: attrs.content,
-      image: attrs.featuredImage?.data?.attributes?.url
-        ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${attrs.featuredImage.data.attributes.url}`
+      image: attrs.featuredImage?.url
+        ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${attrs.featuredImage.url}`
         : '',
       category: attrs.tags?.[0] || 'General',
       date: new Date(attrs.publishedDate).toLocaleDateString('en-US', {
