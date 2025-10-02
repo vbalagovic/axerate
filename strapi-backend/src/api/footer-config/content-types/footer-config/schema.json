@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "footer_configs",
+  "info": {
+    "singularName": "footer-config",
+    "pluralName": "footer-configs",
+    "displayName": "Footer Config",
+    "description": "Footer configuration for different pages"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageName": {
+      "type": "enumeration",
+      "enum": ["main", "startup-studio"],
+      "required": true,
+      "unique": true
+    },
+    "companyDescription": {
+      "type": "text",
+      "required": true
+    },
+    "servicesTitle": {
+      "type": "string",
+      "default": "Services"
+    },
+    "servicesLinks": {
+      "type": "json",
+      "required": true
+    },
+    "contactTitle": {
+      "type": "string",
+      "default": "Contact"
+    },
+    "contactLinks": {
+      "type": "json",
+      "required": true
+    },
+    "socialLinks": {
+      "type": "json",
+      "required": true
+    },
+    "copyrightText": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

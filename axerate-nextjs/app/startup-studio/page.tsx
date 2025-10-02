@@ -11,30 +11,55 @@ import { Metadata } from 'next';
 export async function generateMetadata(): Promise<Metadata> {
   const metadata = await getPageMetadata('startup-studio');
 
-  if (!metadata) {
-    return {
-      title: "Startup Studio - Axerate",
-      description: "The startup studio that builds from zero to funding. Ideate with us, get your MVP coded, legal setup handled, and investor doors opened.",
-    };
-  }
+  // Default values
+  const defaultTitle = 'Startup Studio - Axerate';
+  const defaultDescription = 'The startup studio that builds from zero to funding. Ideate with us, get your MVP coded, legal setup handled, and investor doors opened.';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://axerate.com';
+
+  // Use metadata from Strapi or fallback to defaults
+  const title = metadata?.title || defaultTitle;
+  const description = metadata?.description || defaultDescription;
+  const ogTitle = metadata?.ogTitle || title;
+  const ogDescription = metadata?.ogDescription || description;
+
+  // Ensure image URL is absolute
+  const getAbsoluteUrl = (url: string | undefined) => {
+    if (!url) return `${baseUrl}/og-image-startup-studio.png`; // Fallback image
+    if (url.startsWith('http://') || url.startsWith('https://')) return url;
+    return `${baseUrl}${url.startsWith('/') ? url : '/' + url}`;
+  };
+
+  const imageUrl = getAbsoluteUrl(metadata?.ogImage);
 
   return {
-    title: metadata.title,
-    description: metadata.description,
-    keywords: metadata.keywords,
+    title,
+    description,
+    keywords: metadata?.keywords,
+    metadataBase: new URL(baseUrl),
     openGraph: {
-      title: metadata.ogTitle || metadata.title,
-      description: metadata.ogDescription || metadata.description,
-      images: metadata.ogImage ? [metadata.ogImage] : [],
+      type: 'website',
+      url: `${baseUrl}/startup-studio`,
+      title: ogTitle,
+      description: ogDescription,
+      siteName: 'Axerate',
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: ogTitle,
+        },
+      ],
     },
     twitter: {
-      card: metadata.twitterCard || 'summary_large_image',
-      title: metadata.ogTitle || metadata.title,
-      description: metadata.ogDescription || metadata.description,
-      images: metadata.ogImage ? [metadata.ogImage] : [],
+      card: 'summary_large_image',
+      site: '@axerate',
+      title: ogTitle,
+      description: ogDescription,
+      images: [imageUrl],
     },
     alternates: {
-      canonical: metadata.canonicalUrl,
+      canonical: metadata?.canonicalUrl || `${baseUrl}/startup-studio`,
     },
   };
 }

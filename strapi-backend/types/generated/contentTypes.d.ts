@@ -523,6 +523,47 @@ export interface ApiContactSubmissionContactSubmission
   };
 }
 
+export interface ApiFooterConfigFooterConfig
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'footer_configs';
+  info: {
+    description: 'Footer configuration for different pages';
+    displayName: 'Footer Config';
+    pluralName: 'footer-configs';
+    singularName: 'footer-config';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    companyDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    contactLinks: Schema.Attribute.JSON & Schema.Attribute.Required;
+    contactTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Contact'>;
+    copyrightText: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::footer-config.footer-config'
+    > &
+      Schema.Attribute.Private;
+    pageName: Schema.Attribute.Enumeration<['main', 'startup-studio']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    servicesLinks: Schema.Attribute.JSON & Schema.Attribute.Required;
+    servicesTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Services'>;
+    socialLinks: Schema.Attribute.JSON & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGeneralInquiryGeneralInquiry
   extends Struct.CollectionTypeSchema {
   collectionName: 'general_inquiries';
@@ -1467,6 +1508,7 @@ declare module '@strapi/strapi' {
       'api::architects-section.architects-section': ApiArchitectsSectionArchitectsSection;
       'api::blog-post.blog-post': ApiBlogPostBlogPost;
       'api::contact-submission.contact-submission': ApiContactSubmissionContactSubmission;
+      'api::footer-config.footer-config': ApiFooterConfigFooterConfig;
       'api::general-inquiry.general-inquiry': ApiGeneralInquiryGeneralInquiry;
       'api::hero-section.hero-section': ApiHeroSectionHeroSection;
       'api::newsletter-subscription.newsletter-subscription': ApiNewsletterSubscriptionNewsletterSubscription;

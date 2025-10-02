@@ -89,7 +89,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const strapiPost = await getBlogPost(slug);
 
   let post;
-  if (strapiPost) {
+  if (strapiPost && strapiPost.attributes) {
     const attrs = strapiPost.attributes;
     post = {
       title: attrs.title,
@@ -132,7 +132,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const strapiPost = await getBlogPost(slug);
 
   let post;
-  if (strapiPost) {
+  if (strapiPost && strapiPost.attributes) {
     const attrs = strapiPost.attributes;
     post = {
       title: attrs.title,

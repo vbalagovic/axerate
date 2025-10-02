@@ -306,3 +306,27 @@ export async function subscribeToNewsletter(email: string) {
     throw error;
   }
 }
+
+// Footer Config
+export async function getFooterConfig(pageName: 'main' | 'startup-studio') {
+  try {
+    const data: any = await fetchAPI(
+      `/footer-configs?filters[pageName][$eq]=${pageName}`
+    );
+    const item = data?.data?.[0];
+    if (!item) return null;
+
+    return {
+      companyDescription: item.attributes.companyDescription,
+      servicesTitle: item.attributes.servicesTitle,
+      servicesLinks: item.attributes.servicesLinks,
+      contactTitle: item.attributes.contactTitle,
+      contactLinks: item.attributes.contactLinks,
+      socialLinks: item.attributes.socialLinks,
+      copyrightText: item.attributes.copyrightText,
+    };
+  } catch (error) {
+    console.error('Error fetching footer config:', error);
+    return null;
+  }
+}
