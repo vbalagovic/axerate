@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import LayoutClient from "@/components/LayoutClient";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import DynamicFooter from "@/components/DynamicFooter";
 import { getFooterConfig } from "@/lib/strapi";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,8 +23,11 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Fetch footer config for main page
-  const footerConfig = await getFooterConfig("main");
+  // Fetch both footer configs
+  const [mainFooter, studioFooter] = await Promise.all([
+    getFooterConfig("main"),
+    getFooterConfig("startup-studio"),
+  ]);
 
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
@@ -48,7 +52,8 @@ export default async function RootLayout({
       </head>
       <body className={`${inter.className} antialiased`}>
         <GoogleAnalytics />
-        <LayoutClient footerConfig={footerConfig}>{children}</LayoutClient>
+        <LayoutClient>{children}</LayoutClient>
+        <DynamicFooter mainFooter={mainFooter} studioFooter={studioFooter} />
       </body>
     </html>
   );
