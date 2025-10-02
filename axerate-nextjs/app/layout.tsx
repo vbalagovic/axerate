@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import LayoutClient from "@/components/LayoutClient";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { getFooterConfig } from "@/lib/strapi";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,11 +17,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Fetch footer config for main page
+  const footerConfig = await getFooterConfig("main");
+
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
       <head>
@@ -44,7 +48,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} antialiased`}>
         <GoogleAnalytics />
-        <LayoutClient>{children}</LayoutClient>
+        <LayoutClient footerConfig={footerConfig}>{children}</LayoutClient>
       </body>
     </html>
   );
