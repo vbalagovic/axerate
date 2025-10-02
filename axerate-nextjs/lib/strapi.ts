@@ -153,7 +153,44 @@ export async function getBlogPost(slug: string) {
     const data: any = await fetchAPI(
       `/blog-posts?filters[slug][$eq]=${slug}&populate=*`
     );
-    return data?.data?.[0] || null;
+
+    const item = data?.data?.[0];
+    if (!item) return null;
+
+    // Convert Markdown to HTML if needed
+    const content = item.attributes.content || item.content || '';
+    const isMarkdown = content.trim().startsWith('#') || content.includes('\n##');
+
+    // For now, wrap markdown in pre tag or convert basic markdown
+    const htmlContent = isMarkdown
+      ? content
+          .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+          .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+          .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/\*(.*?)\*/g, '<em>$1</em>')
+          .replace(/\n\n/g, '</p><p>')
+          .replace(/^(?!<[h|p])/gm, '<p>')
+          .replace(/(?<![>])$/gm, '</p>')
+          .replace(/<p><\/p>/g, '')
+          .replace(/<p>(<h[1-6]>)/g, '$1')
+          .replace(/(<\/h[1-6]>)<\/p>/g, '$1')
+      : content;
+
+    return {
+      id: item.id,
+      attributes: {
+        title: item.attributes?.title || item.title,
+        description: item.attributes?.description || item.description,
+        content: htmlContent,
+        author: item.attributes?.author || item.author,
+        readTime: item.attributes?.readTime || item.readTime,
+        tags: item.attributes?.tags || item.tags || [],
+        slug: item.attributes?.slug || item.slug,
+        publishedDate: item.attributes?.publishedDate || item.publishedDate,
+        featuredImage: item.attributes?.featuredImage || item.featuredImage,
+      }
+    };
   } catch (error) {
     console.error('Error fetching blog post:', error);
     return null;

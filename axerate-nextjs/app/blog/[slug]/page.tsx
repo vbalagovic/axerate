@@ -131,9 +131,12 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const strapiPost = await getBlogPost(slug);
 
+  console.log('🔍 Blog post fetch result:', strapiPost ? 'Found in Strapi' : 'Not found, using fallback');
+
   let post;
   if (strapiPost && strapiPost.attributes) {
     const attrs = strapiPost.attributes;
+    console.log('✅ Using Strapi content for:', attrs.title);
     post = {
       title: attrs.title,
       content: attrs.content,
@@ -149,6 +152,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       tags: attrs.tags || [],
     };
   } else {
+    console.log('⚠️ Using fallback content for slug:', slug);
     post = fallbackBlogPosts[slug];
   }
 
