@@ -202,7 +202,21 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           </div>
 
           <div
-            className="prose max-w-none"
+            className="prose prose-invert prose-lg max-w-none
+                       prose-headings:text-primary prose-headings:font-bold
+                       prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl
+                       prose-p:text-subtle prose-p:leading-relaxed
+                       prose-a:text-violet-400 prose-a:no-underline hover:prose-a:text-violet-300
+                       prose-strong:text-primary prose-strong:font-semibold
+                       prose-ul:text-subtle prose-ol:text-subtle
+                       prose-li:my-2
+                       prose-img:rounded-lg prose-img:shadow-lg
+                       prose-code:text-violet-300 prose-code:bg-violet-500/10 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
+                       prose-pre:bg-muted prose-pre:border prose-pre:border-strong
+                       prose-blockquote:border-l-4 prose-blockquote:border-violet-500 prose-blockquote:pl-4 prose-blockquote:italic
+                       prose-table:border-collapse prose-table:border prose-table:border-strong
+                       prose-th:bg-muted prose-th:border prose-th:border-strong prose-th:p-3
+                       prose-td:border prose-td:border-strong prose-td:p-3"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 

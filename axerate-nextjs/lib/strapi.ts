@@ -118,7 +118,7 @@ export async function getBlogPosts(limit?: number) {
   try {
     const limitQuery = limit ? `&pagination[limit]=${limit}` : '';
     const data: any = await fetchAPI(
-      `/blog-posts?populate=*&sort=publishedDate:desc${limitQuery}`
+      `/blog-posts?populate=featuredImage&sort=publishedDate:desc${limitQuery}`
     );
     return data?.data?.map((item: any) => ({
       id: item.id,
@@ -151,7 +151,7 @@ export async function getBlogPosts(limit?: number) {
 export async function getBlogPost(slug: string) {
   try {
     const data: any = await fetchAPI(
-      `/blog-posts?filters[slug][$eq]=${slug}&populate=*`
+      `/blog-posts?filters[slug][$eq]=${slug}&populate=featuredImage`
     );
 
     let item = data?.data;
@@ -169,36 +169,18 @@ export async function getBlogPost(slug: string) {
     // Handle both nested attributes and flat structure
     const attrs = item.attributes || item;
 
-    // Safely get content
+    // Safely get content - it's already rich text HTML from Strapi
     const content = attrs.content || '';
     if (!content) {
       console.log('⚠️ No content found for blog post:', attrs.title);
     }
-
-    const isMarkdown = content && (content.trim().startsWith('#') || content.includes('\n##'));
-
-    // Convert markdown to HTML if needed
-    const htmlContent = isMarkdown
-      ? content
-          .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-          .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-          .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-          .replace(/\*(.*?)\*/g, '<em>$1</em>')
-          .replace(/\n\n/g, '</p><p>')
-          .replace(/^(?!<[h|p])/gm, '<p>')
-          .replace(/(?<![>])$/gm, '</p>')
-          .replace(/<p><\/p>/g, '')
-          .replace(/<p>(<h[1-6]>)/g, '$1')
-          .replace(/(<\/h[1-6]>)<\/p>/g, '$1')
-      : content;
 
     return {
       id: item.id,
       attributes: {
         title: attrs.title || '',
         description: attrs.description || '',
-        content: htmlContent,
+        content: content, // Rich text content is already HTML
         author: attrs.author || 'Axerate Team',
         readTime: attrs.readTime || '5 min read',
         tags: attrs.tags || [],

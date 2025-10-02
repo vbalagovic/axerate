@@ -119,6 +119,8 @@ jobs:
           NEXT_PUBLIC_STRAPI_URL=$STRAPI_URL
           STRAPI_API_URL=$STRAPI_URL
           STRAPI_API_TOKEN=$STRAPI_API_TOKEN
+          NEXT_PUBLIC_SITE_URL=https://axerate.com
+          NEXT_PUBLIC_GA_MEASUREMENT_ID=G-Q6DVJ7DVCX
           EOF
 
             # Install dependencies and build
