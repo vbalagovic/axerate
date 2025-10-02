@@ -11,6 +11,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'blog.neural-draft.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'api.axerate.com',
+      },
     ],
   },
 };
