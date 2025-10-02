@@ -21,8 +21,7 @@
       "required": true
     },
     "content": {
-      "type": "customField",
-      "customField": "plugin::ckeditor.CKEditor",
+      "type": "richtext",
       "required": true
     },
     "author": {
