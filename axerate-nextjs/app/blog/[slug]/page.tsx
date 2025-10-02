@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getBlogPost } from "@/lib/strapi";
+import { Metadata } from 'next';
 
-// This would normally come from a CMS or database
-const blogPosts: Record<string, any> = {
+// Fallback blog posts data
+const fallbackBlogPosts: Record<string, any> = {
   "amazon-generative-ai": {
     title: "Understanding Amazon's Generative AI: Tools and Applications",
     image:
@@ -82,9 +84,23 @@ const blogPosts: Record<string, any> = {
   },
 };
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const post = blogPosts[slug];
+  const strapiPost = await getBlogPost(slug);
+
+  let post;
+  if (strapiPost) {
+    const attrs = strapiPost.attributes;
+    post = {
+      title: attrs.title,
+      description: attrs.description,
+      image: attrs.featuredImage?.data?.attributes?.url
+        ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${attrs.featuredImage.data.attributes.url}`
+        : null,
+    };
+  } else {
+    post = fallbackBlogPosts[slug];
+  }
 
   if (!post) {
     return {
@@ -92,15 +108,49 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
+  const description = post.description || (typeof post.content === 'string' ? post.content.substring(0, 160).replace(/<[^>]*>/g, '') : '');
+
   return {
     title: `${post.title} - Axerate Blog`,
-    description: post.content.substring(0, 160),
+    description: description,
+    openGraph: {
+      title: `${post.title} - Axerate Blog`,
+      description: description,
+      images: post.image ? [post.image] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${post.title} - Axerate Blog`,
+      description: description,
+      images: post.image ? [post.image] : [],
+    },
   };
 }
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = blogPosts[slug];
+  const strapiPost = await getBlogPost(slug);
+
+  let post;
+  if (strapiPost) {
+    const attrs = strapiPost.attributes;
+    post = {
+      title: attrs.title,
+      content: attrs.content,
+      image: attrs.featuredImage?.data?.attributes?.url
+        ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${attrs.featuredImage.data.attributes.url}`
+        : '',
+      category: attrs.tags?.[0] || 'General',
+      date: new Date(attrs.publishedDate).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }),
+      tags: attrs.tags || [],
+    };
+  } else {
+    post = fallbackBlogPosts[slug];
+  }
 
   if (!post) {
     return (
@@ -136,13 +186,15 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
               {post.title}
             </h1>
-            <Image
-              src={post.image}
-              alt={post.title}
-              width={1200}
-              height={600}
-              className="w-full h-96 object-cover rounded-xl"
-            />
+            {post.image && (
+              <Image
+                src={post.image}
+                alt={post.title}
+                width={1200}
+                height={600}
+                className="w-full h-96 object-cover rounded-xl"
+              />
+            )}
           </div>
 
           <div
