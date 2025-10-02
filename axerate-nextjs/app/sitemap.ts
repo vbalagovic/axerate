@@ -1,6 +1,10 @@
 import { MetadataRoute } from 'next';
 import { getBlogPosts } from '@/lib/strapi';
 
+// Make this route dynamic so it regenerates on each request
+export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // Revalidate every hour
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://axerate.com';
 
