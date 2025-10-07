@@ -118,7 +118,7 @@ export async function getBlogPosts(limit?: number) {
   try {
     const limitQuery = limit ? `&pagination[limit]=${limit}` : '';
     const data: any = await fetchAPI(
-      `/blog-posts?populate=featuredImage&sort=publishedDate:desc${limitQuery}`
+      `/blog-posts?populate=*&sort=publishedDate:desc${limitQuery}`
     );
     return data?.data?.map((item: any) => {
       // Strapi 5 returns data without .attributes wrapper
