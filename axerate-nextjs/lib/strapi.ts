@@ -120,29 +120,34 @@ export async function getBlogPosts(limit?: number) {
     const data: any = await fetchAPI(
       `/blog-posts?populate=featuredImage&sort=publishedDate:desc${limitQuery}`
     );
-    return data?.data?.map((item: any) => ({
-      id: item.id,
-      title: item.attributes.title,
-      slug: item.attributes.slug,
-      description: item.attributes.description,
-      excerpt: item.attributes.description, // Use description as excerpt
-      content: item.attributes.content,
-      author: item.attributes.author,
-      readTime: item.attributes.readTime,
-      tags: item.attributes.tags || [],
-      publishedDate: item.attributes.publishedDate,
-      date: new Date(item.attributes.publishedDate).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      }),
-      category: item.attributes.tags?.[0] || 'General', // Use first tag as category
-      image: item.attributes.featuredImage?.data?.attributes?.url
-        ? `${STRAPI_URL}${item.attributes.featuredImage.data.attributes.url}`
-        : '',
-    })) || [];
+    return data?.data?.map((item: any) => {
+      // Strapi 5 returns data without .attributes wrapper
+      const attrs = item.attributes || item;
+
+      return {
+        id: item.id,
+        title: attrs.title,
+        slug: attrs.slug,
+        description: attrs.description,
+        excerpt: attrs.description, // Use description as excerpt
+        content: attrs.content,
+        author: attrs.author,
+        readTime: attrs.readTime,
+        tags: attrs.tags || [],
+        publishedDate: attrs.publishedDate,
+        date: new Date(attrs.publishedDate).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }),
+        category: attrs.tags?.[0] || 'General', // Use first tag as category
+        image: attrs.featuredImage?.data?.attributes?.url
+          ? `${STRAPI_URL}${attrs.featuredImage.data.attributes.url}`
+          : '',
+      };
+    }) || [];
   } catch (error) {
-    // Silently fail if Strapi is not running
+    console.error('Error fetching blog posts:', error);
     return [];
   }
 }

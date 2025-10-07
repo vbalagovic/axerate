@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { submitContactForm } from "@/lib/strapi";
+import { submitGeneralInquiry } from "@/lib/strapi";
 
 interface HomeClientProps {
   heroData: any;
@@ -48,16 +48,25 @@ export default function HomeClient({ heroData, processSteps, teamMembers, blogPo
 
     const form = e.currentTarget;
     const formData = new FormData(form);
+
+    // Map budget values to enum
+    const budgetValue = formData.get('budget') as string;
+    const budgetMap: { [key: string]: string } = {
+      '$10,000 - $20,000': 'budget_10k_20k',
+      '$20,000 - $50,000': 'budget_20k_50k',
+      '$50,000+': 'budget_50k_plus'
+    };
+
     const data = {
       name: formData.get('name') as string,
       email: formData.get('email') as string,
-      ventureStage: formData.get('enquiry') as string,
-      fundingStatus: formData.get('budget') as string,
+      enquiryType: formData.get('enquiry') as string,
+      budget: budgetMap[budgetValue] || 'budget_10k_20k',
       message: formData.get('message') as string,
     };
 
     try {
-      await submitContactForm(data);
+      await submitGeneralInquiry(data);
       setSubmitStatus('success');
       form.reset();
     } catch (error) {
